@@ -54,6 +54,20 @@ register_fprime_implementation(
 )
 
 register_fprime_implementation(
+        Os_CountingSemaphore_VxWorks
+    SOURCES
+       "${CMAKE_CURRENT_LIST_DIR}/CountingSemaphore.cpp"
+       "${CMAKE_CURRENT_LIST_DIR}/DefaultCountingSemaphore.cpp"
+    HEADERS
+      "${CMAKE_CURRENT_LIST_DIR}/CountingSemaphore.hpp"
+    DEPENDS
+        Fw_Types
+        Os_VxWorks_Shared
+    IMPLEMENTS
+        Os_CountingSemaphore
+)
+
+register_fprime_implementation(
         Os_Mutex_VxWorks
     SOURCES
        "${CMAKE_CURRENT_LIST_DIR}/Mutex.cpp"

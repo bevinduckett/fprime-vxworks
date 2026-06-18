@@ -9,6 +9,7 @@
 #include "Os/Condition.hpp"
 #include "Os/Mutex.hpp"
 #include "Os/Task.hpp"
+#include "Os/CountingSemaphore.hpp"
 
 namespace Os {
 namespace VxWorks {
@@ -32,6 +33,12 @@ Os::Mutex::Status vxworks_status_to_mutex_status(int vxworks_status);
 //!
 Os::ConditionVariable::Status vxworks_status_to_conditional_status(int vxworks_status);
 
+//! Convert a VxWorks return status (int) for Semaphore operations to the Os::Semaphore::Status
+//! representation.
+//! \param vxworks_status: return status
+//! \return: Os::Semaphore::Status representation of the error
+//!
+Os::CountingSemaphore::Status vxworks_status_to_semaphore_status(int vxworks_status) ;
 }  // namespace VxWorks
 }  // namespace Os
 #endif

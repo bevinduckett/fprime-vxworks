@@ -52,6 +52,24 @@ ConditionVariable::Status vxworks_status_to_conditional_status(int vxworks_statu
     }
     return status;
 }
+Os::CountingSemaphore::Status vxworks_status_to_semaphore_status(int vxworks_status) {
+    Os::CountingSemaphore::Status status = Os::CountingSemaphore::Status::ERROR_OTHER;
+    switch (vxworks_status) {
+        case VXWORKS_OK:
+            status = Os::CountingSemaphore::Status::OP_OK;
+            break;
+        case S_objLib_OBJ_UNAVAILABLE:
+            status = Os::CountingSemaphore::Status::ERROR_OTHER;
+            break;
+        case S_objLib_OBJ_TIMEOUT:
+            status = Os::CountingSemaphore::Status::ERROR_TIMEOUT;
+            break;
+        default:
+            status = Os::CountingSemaphore::Status::ERROR_OTHER;
+            break;
+    }
+    return status;
+}
 
 }  // namespace VxWorks
 }  // namespace Os
